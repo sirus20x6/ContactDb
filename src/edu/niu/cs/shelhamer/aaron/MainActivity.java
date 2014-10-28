@@ -3,8 +3,12 @@ package edu.niu.cs.shelhamer.aaron;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.widget.ListView;
 
 public class MainActivity extends Activity {
+	
+	ListView myList;
+	DbAdapter db;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

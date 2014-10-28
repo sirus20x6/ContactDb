@@ -1,6 +1,8 @@
 package edu.niu.cs.shelhamer.aaron;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
@@ -33,6 +35,26 @@ public class DbAdapter {
 	
 	public void close(){
 		myHelper.close();
+	}
+	
+	public void insertContact(String n, String p){
+		ContentValues cv = new ContentValues();
+		cv.put("NAME", n);
+		cv.put("PHONE", p);
+		db.insert(TABLE_NAME, null, cv);
+	}// end insert
+	
+	public Cursor getAll(){
+		
+		return db.query(TABLE_NAME, new String[] { PK, NAME, PHONE}, null, null, null, null, null);
+	}
+	public Cursor getOne(long rowId){
+		Cursor c = db.query(true, TABLE_NAME, new String[]{PK,NAME,PHONE}, PK + " = " + rowId, null,
+				null, null, null, null, null);
+		if(c != null){
+			c.moveToFirst();
+		}
+		return c;
 	}
 
 	private static class MySQLiteHelper extends SQLiteOpenHelper{
