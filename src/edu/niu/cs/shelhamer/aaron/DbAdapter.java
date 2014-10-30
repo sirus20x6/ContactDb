@@ -45,7 +45,7 @@ public class DbAdapter {
 	}// end insert
 	
 	public Cursor getAll(){
-		
+		Log.d("test", "test");
 		return db.query(TABLE_NAME, new String[] { PK, NAME, PHONE}, null, null, null, null, null);
 	}
 	public Cursor getOne(long rowId){
