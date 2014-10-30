@@ -2,6 +2,7 @@ package edu.niu.cs.shelhamer.aaron;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.view.Menu;
 import android.widget.ListView;
 
@@ -20,6 +21,7 @@ public class MainActivity extends Activity {
 		insert();
 		db.open();
 		curse = new DbCursorAdapter(this, db.getAll());
+Log.d("test2","test2");
 		myList.setAdapter(curse);
 	}
 
